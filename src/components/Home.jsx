@@ -6,14 +6,15 @@ export default function Home() {
       <Box
         h="75vh"
         bgImage={hero}
-        bgSize="cover"
+        bgSize={{ base: "auto", lg: "cover" }}
         bgAttachment="fixed"
         pos="relative"
         bgRepeat="no-repeat"
-        bgPos={"center top"}
+        bgPos={"top"}
         display={"flex"}
-        alignItems={{ base: "start", md: "center" }}
-        pt={{ base: "2rem", md: "0" }}
+        pt={"6rem"}
+        overflow={"hidden"}
+        transition={"transform 0.5s ease-out"}
       >
         <Container maxW={"container.lg"} centerContent={"true"}>
           <VStack textAlign={{ base: "center", md: "start" }} spacing={"8px"}>
