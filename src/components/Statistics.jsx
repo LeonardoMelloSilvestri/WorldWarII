@@ -4,7 +4,7 @@ export default function Statistics() {
     <>
       <Box
         bgGradient={"linear(to-r, green.500, green.600, green.700)"}
-        py={"4rem"}
+        py={{ base: "2rem", lg: "4rem" }}
       >
         <Flex
           justifyContent={"center"}
@@ -25,7 +25,7 @@ export default function Statistics() {
           </Box>
           <Box maxW={{ base: "100vw", lg: "380px" }}>
             <Text fontSize={"2xl"} fontWeight={"bold"} color={"white"}>
-              70 MILHÕES de mortes
+              Lorem ipsum dolor sit amet
             </Text>
             <Text letterSpacing={"1px"} color={"white"} mt={"0.7rem"}>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -36,7 +36,7 @@ export default function Statistics() {
           </Box>
           <Box maxW={{ base: "100vw", lg: "380px" }}>
             <Text fontSize={"2xl"} fontWeight={"bold"} color={"white"}>
-              70 MILHÕES de mortes
+              Lorem ipsum dolor
             </Text>
             <Text letterSpacing={"1px"} color={"white"} mt={"0.7rem"}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
