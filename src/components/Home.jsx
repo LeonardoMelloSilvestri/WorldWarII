@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
       <Box
-        h="75vh"
+        h={{ base: "75vh", lg: "85vh" }}
         bgImage={hero}
         bgSize={{ base: "auto", lg: "cover" }}
         bgAttachment="fixed"
@@ -12,7 +12,7 @@ export default function Home() {
         bgRepeat="no-repeat"
         bgPos={"top"}
         display={"flex"}
-        pt={"6rem"}
+        pt={{ base: "2rem", lg: "10rem" }}
         overflow={"hidden"}
         transition={"transform 0.5s ease-out"}
       >
