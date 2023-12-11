@@ -14,8 +14,9 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 
-const NavbarWithDrawer = () => {
+export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -23,12 +24,18 @@ const NavbarWithDrawer = () => {
       <Flex
         bgGradient="linear(to-r, green.500, green.600, green.700)"
         p={4}
+        borderBottom={{ base: "", lg: "2px solid white" }}
         align="center"
         justify="space-between"
+        position={{ base: "inherit", lg: "fixed" }}
+        zIndex={"sticky"}
+        w={"100%"}
       >
         <Box p="2">
           <Heading as="h1" size="md" color="white">
-            World War II
+            <Link onClick={() => onClose()} to="/">
+              World War II
+            </Link>
           </Heading>
         </Box>
         <Box
@@ -37,12 +44,13 @@ const NavbarWithDrawer = () => {
           alignItems="center"
         >
           <Button
+            onClick={() => onClose()}
             _hover={{ bg: "white", color: "green.600" }}
             bg="transparent"
             color="white"
             mr={2}
           >
-            Cronologia
+            <Link to="/cronologia">Cronologia</Link>
           </Button>
           <Button
             _hover={{ bg: "white", color: "green.600" }}
@@ -72,36 +80,54 @@ const NavbarWithDrawer = () => {
           bgGradient="linear(to-r, green.500, green.600)"
         >
           <DrawerCloseButton />
-          <DrawerHeader>World War II</DrawerHeader>
+          <DrawerHeader>
+            <Link onClick={onClose} to="/">
+              World War II
+            </Link>
+          </DrawerHeader>
 
           <DrawerBody>
             <VStack spacing="10px">
-              <Button
-                fontSize="xl"
-                color="white"
-                variant="link"
-                href="#"
-                w="100%"
-                mb={2}
-              >
-                Cronologia
-              </Button>
-              <Button
-                fontSize="xl"
-                color="white"
-                variant="link"
-                href="#"
-                w="100%"
-                mb={2}
-              >
-                Participantes
-              </Button>
+              <Link onClick={onClose} to="/">
+                <Button
+                  fontSize="xl"
+                  color="white"
+                  variant="link"
+                  href="#"
+                  w="100%"
+                  mb={2}
+                >
+                  Home
+                </Button>
+              </Link>
+              <Link onClick={onClose} to="/cronologia">
+                <Button
+                  fontSize="xl"
+                  color="white"
+                  variant="link"
+                  href="#"
+                  w="100%"
+                  mb={2}
+                >
+                  Cronologia
+                </Button>
+              </Link>
+              <Link onClick={onClose} to="/participantes">
+                <Button
+                  fontSize="xl"
+                  color="white"
+                  variant="link"
+                  href="#"
+                  w="100%"
+                  mb={2}
+                >
+                  Participantes
+                </Button>
+              </Link>
             </VStack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
     </>
   );
-};
-
-export default NavbarWithDrawer;
+}
