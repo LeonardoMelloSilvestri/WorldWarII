@@ -1,3 +1,7 @@
+:root {
+  --swiper-theme-color: #27694A !important;
+}
+
 * {
   box-sizing: border-box !important;
 }
