@@ -4,6 +4,7 @@ export default function Footer() {
   return (
     <>
       <Box
+        as="footer"
         py={"1rem"}
         bgGradient="linear(to-r, green.500, green.600, green.700)"
       >
