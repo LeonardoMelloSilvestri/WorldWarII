@@ -27,9 +27,6 @@ export default function Navbar() {
         borderBottom={{ base: "", lg: "2px solid white" }}
         align="center"
         justify="space-between"
-        position={{ base: "inherit", lg: "fixed" }}
-        zIndex={"sticky"}
-        w={"100%"}
       >
         <Box p="2">
           <Heading as="h1" size="md" color="white">
@@ -43,23 +40,27 @@ export default function Navbar() {
           width={{ base: "full", md: "auto" }}
           alignItems="center"
         >
-          <Button
-            onClick={() => onClose()}
-            _hover={{ bg: "white", color: "green.600" }}
-            bg="transparent"
-            color="white"
-            mr={2}
-          >
-            <Link to="/cronologia">Cronologia</Link>
-          </Button>
-          <Button
-            _hover={{ bg: "white", color: "green.600" }}
-            bg="transparent"
-            color="white"
-            mr={2}
-          >
-            Participantes
-          </Button>
+          <Link to="/cronologia">
+            <Button
+              onClick={() => onClose()}
+              _hover={{ bg: "white", color: "green.600" }}
+              bg="transparent"
+              color="white"
+              mr={2}
+            >
+              Cronologia
+            </Button>
+          </Link>
+          <Link to="/participantes">
+            <Button
+              _hover={{ bg: "white", color: "green.600" }}
+              bg="transparent"
+              color="white"
+              mr={2}
+            >
+              Participantes
+            </Button>
+          </Link>
         </Box>
         <IconButton
           icon={<HamburgerIcon />}
