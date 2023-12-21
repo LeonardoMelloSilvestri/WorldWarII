@@ -14,8 +14,10 @@ import { useState } from "react";
 
 export default function Chronology() {
   const { chronologyInfos } = useStore();
-  const [name, setName] = useState("");
-  const [content, setContent] = useState("");
+  const [name, setName] = useState("Segunda Guerra Mundial");
+  const [content, setContent] = useState(
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum fugit magni ducimus nihil quibusdam culpa suscipit consequuntur molestias aliquam consectetur a reprehenderit qui sunt voluptatem architecto voluptas praesentium, officia corrupti!"
+  );
   return (
     <>
       <Flex>
@@ -63,7 +65,7 @@ export default function Chronology() {
           ))}
         </Flex>
         <Box p={"2rem"}>
-          <Text color={"green.700"} fontWeight={"semibold"} fontSize={"3xl"}>
+          <Text color={"green.700"} fontWeight={"semibold"} fontSize={"4xl"}>
             {name}
           </Text>
           <Text mt={"0.8rem"} letterSpacing={"1px"}>
