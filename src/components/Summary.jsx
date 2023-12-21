@@ -1,23 +1,20 @@
 import { Box, Text, Flex, Container, Image } from "@chakra-ui/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import img1 from "../assets/img/Swiper.jpg";
-import img2 from "../assets/img/Swiper2.jpg";
-import img3 from "../assets/img/Swiper3.jpg";
-import img4 from "../assets/img/Swiper4.jpg";
-import img5 from "../assets/img/Swiper5.jpg";
 
 export default function Summary() {
   const slides = [
     { id: 1, url: img1 },
-    { id: 2, url: img2 },
-    { id: 3, url: img3 },
-    { id: 4, url: img4 },
-    { id: 5, url: img5 },
+    { id: 2, url: img1 },
+    { id: 3, url: img1 },
+    { id: 4, url: img1 },
+    { id: 5, url: img1 },
   ];
   return (
     <>
@@ -48,10 +45,12 @@ export default function Summary() {
             </Box>
             <Box minW={"200px"}>
               <Swiper
-                modules={[Navigation]}
-                spaceBetween={50}
-                slidesPerView={1}
-                navigation
+                modules={[Navigation, Pagination]}
+                spaceBetween={30}
+                navigation={true}
+                pagination={{
+                  clickable: true,
+                }}
                 grabCursor={true}
               >
                 {slides.map((slide) => (

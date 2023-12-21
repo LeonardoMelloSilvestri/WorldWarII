@@ -2,6 +2,12 @@
   --swiper-theme-color: #27694A !important;
 }
 
+@media(max-width: 998px) {
+  :root {
+    --swiper-theme-color: white !important;
+  }
+}
+
 * {
   box-sizing: border-box !important;
 }
