@@ -1,6 +1,20 @@
 import { create } from "zustand";
 
-export const useStore = create(() => ({
+export const useDrawerStore = create((set) => ({
+  isDrawerOpen: false,
+  openDrawer: () => set({ isDrawerOpen: true }),
+  closeDrawer: () => set({ isDrawerOpen: false }),
+}));
+
+export const useAccordionStore = create((set) => ({
+  name: "Segunda Guerra Mundial",
+  content:
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum fugit magni ducimus nihil quibusdam culpa suscipit consequuntur molestias aliquam consectetur a reprehenderit qui sunt voluptatem architecto voluptas praesentium, officia corrupti!",
+  setName: (name) => set(() => ({ name: name })),
+  setContent: (content) => set(() => ({ content: content })),
+}));
+
+export const useChronologyStore = create(() => ({
   chronologyInfos: [
     {
       id: 1,
