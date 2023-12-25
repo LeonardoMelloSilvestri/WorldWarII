@@ -1,70 +1,78 @@
+import AccordionChrono from "./AccordionChrono";
 import {
-  Flex,
-  Text,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionIcon,
-  AccordionPanel,
-  Button,
   Box,
+  Text,
+  Flex,
+  Drawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  Button,
 } from "@chakra-ui/react";
-import { useStore } from "../store/store";
-import { useState } from "react";
+import { useAccordionStore, useDrawerStore } from "../store/store";
+import { useRef, useState, useEffect } from "react";
 
 export default function Chronology() {
-  const { chronologyInfos } = useStore();
-  const [name, setName] = useState("Segunda Guerra Mundial");
-  const [content, setContent] = useState(
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum fugit magni ducimus nihil quibusdam culpa suscipit consequuntur molestias aliquam consectetur a reprehenderit qui sunt voluptatem architecto voluptas praesentium, officia corrupti!"
-  );
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const { name, content } = useAccordionStore();
+  const btnRef = useRef();
+
+  const isDrawerOpen = useDrawerStore((state) => state.isDrawerOpen);
+  const openDrawer = useDrawerStore((state) => state.openDrawer);
+  const closeDrawer = useDrawerStore((state) => state.closeDrawer);
+
+  const handleResize = () => {
+    setScreenWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
-      <Flex>
-        <Flex
-          flexDirection={"column"}
-          pt={"1rem"}
-          gap={"0.7rem"}
-          minW={"320px"}
-          color={"white"}
-          bg={"green.700"}
-          px={"1rem"}
-          spacing={"1rem"}
-          minH={"100vh"}
+      <Flex flexDirection={{ base: "column", lg: "row" }}>
+        {screenWidth > 992 ? (
+          <AccordionChrono />
+        ) : (
+          <Button
+            _hover={{ bg: "green.500", color: "white" }}
+            size={"lg"}
+            bg={"green.600"}
+            color={"white"}
+            my={"5px"}
+            mx={"10px"}
+            ref={btnRef}
+            onClick={openDrawer}
+          >
+            Cronologia
+          </Button>
+        )}
+
+        <Drawer
+          isOpen={isDrawerOpen}
+          size={"sm"}
+          placement="left"
+          onClose={closeDrawer}
+          finalFocusRef={btnRef}
         >
-          {chronologyInfos.map((info) => (
-            <Accordion allowToggle key={info.id}>
-              <AccordionItem>
-                <AccordionButton _expanded={{ bg: "green.500" }}>
-                  <Box as="span" flex={"1"} textAlign={"left"}>
-                    {info.name}
-                  </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-                <AccordionPanel>
-                  {info.subs.map((sub) => (
-                    <Flex flexDirection={"column"} key={sub.id}>
-                      <Button
-                        onClick={() => (
-                          setName(info.name + " - " + sub.name),
-                          setContent(sub.content)
-                        )}
-                        _hover={{ bg: "white", color: "green.600" }}
-                        bg="transparent"
-                        color="white"
-                        mb={"0.3rem"}
-                        key={sub.id}
-                      >
-                        {sub.name}
-                      </Button>
-                    </Flex>
-                  ))}
-                </AccordionPanel>
-              </AccordionItem>
-            </Accordion>
-          ))}
-        </Flex>
-        <Box p={"2rem"}>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader>Segunda Guerra Mundial - Cronologia</DrawerHeader>
+
+            <DrawerBody overflowY={"hidden"}>
+              <AccordionChrono />
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+
+        <Box minH={"100vh"} p={{ base: "1rem", lg: "2rem" }}>
           <Text color={"green.700"} fontWeight={"semibold"} fontSize={"4xl"}>
             {name}
           </Text>
