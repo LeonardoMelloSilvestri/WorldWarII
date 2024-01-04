@@ -1,4 +1,11 @@
 import { create } from "zustand";
+import germany from "../assets/img/alemanha.png";
+import unitedStates from "../assets/img/estados_unidos.png";
+import france from "../assets/img/franca.png";
+import italy from "../assets/img/italia.png";
+import japan from "../assets/img/japao.png";
+import unitedKingdom from "../assets/img/reino_unido.png";
+import sovietUnion from "../assets/img/uniao_sovietica.png";
 
 export const useDrawerStore = create((set) => ({
   isDrawerOpen: false,
@@ -12,6 +19,70 @@ export const useAccordionStore = create((set) => ({
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum fugit magni ducimus nihil quibusdam culpa suscipit consequuntur molestias aliquam consectetur a reprehenderit qui sunt voluptatem architecto voluptas praesentium, officia corrupti!",
   setName: (name) => set(() => ({ name: name })),
   setContent: (content) => set(() => ({ content: content })),
+}));
+
+export const useModalStore = create((set) => ({
+  country: "País",
+  summary: "Resumo",
+  setCountry: (country) => set(() => ({ country: country })),
+  setSummary: (summary) => set(() => ({ summary: summary })),
+}));
+
+export const useCountryStore = create(() => ({
+  alliesInfos: [
+    {
+      id: 1,
+      country: "Estados Unidos",
+      flag: unitedStates,
+      summary:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum impedit labore itaque sed neque iusto quod animi nam odio dicta laboriosam unde doloremque perferendis totam, nihil aliquam provident maxime exercitationem.",
+    },
+    {
+      id: 2,
+      country: "Reino Unido",
+      flag: unitedKingdom,
+      summary:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus autem doloribus eaque quae aut commodi nemo tempore incidunt. Qui nostrum consequuntur, quisquam fugiat accusantium similique et quos vel blanditiis sed.",
+    },
+    {
+      id: 3,
+      country: "France",
+      flag: france,
+      summary:
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni quidem vel temporibus aliquam magnam expedita blanditiis fugiat nam? Quasi libero culpa aliquid animi sit maxime cupiditate alias dignissimos neque necessitatibus.",
+    },
+    {
+      id: 4,
+      country: "União Soviética",
+      flag: sovietUnion,
+      summary:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem dolores, blanditiis aut quis ea porro quibusdam esse repudiandae! Pariatur ipsum dolore ratione voluptas nostrum quis? Iure eos nulla ipsum aliquid.",
+    },
+  ],
+
+  axisInfos: [
+    {
+      id: 1,
+      country: "Alemanha",
+      flag: germany,
+      summary:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit ullam iusto modi numquam voluptatibus veniam, ipsum dolores labore impedit temporibus, consequuntur sunt quia error. Nemo labore laudantium qui aliquid corporis.",
+    },
+    {
+      id: 2,
+      country: "Japão",
+      flag: japan,
+      summary:
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos culpa sed unde est alias, quo ex, necessitatibus tenetur debitis magnam quibusdam dolore blanditiis incidunt vitae at vel aspernatur, assumenda similique!",
+    },
+    {
+      id: 3,
+      country: "Itália",
+      flag: italy,
+      summary:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, a non veniam, fugiat necessitatibus velit corrupti nam repudiandae perferendis, aliquid voluptatibus quasi quos cupiditate beatae enim perspiciatis? Expedita, dolore voluptatum.",
+    },
+  ],
 }));
 
 export const useChronologyStore = create(() => ({
