@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Statistics from "./components/Statistics";
 import Summary from "./components/Summary";
 import Chronology from "./components/Chronology";
+import Countries from "./components/Countries.jsx";
 
 import { createHashRouter, RouterProvider } from "react-router-dom";
 
@@ -27,6 +28,10 @@ const router = createHashRouter([
       {
         path: "cronologia",
         element: <Chronology />,
+      },
+      {
+        path: "participantes",
+        element: <Countries />,
       },
     ],
   },
