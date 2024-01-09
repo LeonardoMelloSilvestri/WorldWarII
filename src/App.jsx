@@ -1,14 +1,19 @@
+import { lazy, Suspense } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+
+import Loading from "./components/Loading";
+const Navbar = lazy(() => import("./components/Navbar"));
+const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
   return (
     <ChakraProvider>
-      <Navbar />
-      <Outlet />
-      <Footer />
+      <Suspense fallback={<Loading />}>
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </Suspense>
     </ChakraProvider>
   );
 }
