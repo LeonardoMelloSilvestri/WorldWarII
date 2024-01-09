@@ -1,0 +1,1 @@
+import{j as e,d as r,T as t}from"./index-Bxb4qKfz.js";function o(){return e.jsx(e.Fragment,{children:e.jsx(r,{as:"footer",py:"1rem",bgGradient:"linear(to-r, green.500, green.600, green.700)",children:e.jsx(t,{color:"white",textAlign:"center",children:"Handcrafted by Leonardo Mello Silvestri"})})})}export{o as default};
